@@ -1,20 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Mode clair/sombre
-    const toggleThemeBtn = document.createElement("button");
-    toggleThemeBtn.textContent = "🌙 Mode Sombre";
-    toggleThemeBtn.classList.add("theme-toggle");
-    document.body.appendChild(toggleThemeBtn);
-    
-    toggleThemeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        if (document.body.classList.contains("dark-mode")) {
-            toggleThemeBtn.textContent = "☀️ Mode Clair";
-        } else {
-            toggleThemeBtn.textContent = "🌙 Mode Sombre";
-        }
+    // Menu hamburger responsive
+    const menuToggle = document.createElement("button");
+    menuToggle.classList.add("menu-toggle");
+    menuToggle.innerHTML = "&#9776;";
+    document.querySelector(".navbar").prepend(menuToggle);
+
+    const navList = document.querySelector(".navbar ul");
+    menuToggle.addEventListener("click", () => {
+        navList.classList.toggle("active");
     });
 
-    // Effet de défilement fluide
+    // Défilement fluide
     document.querySelectorAll("a[href^='#']").forEach(anchor => {
         anchor.addEventListener("click", function(e) {
             e.preventDefault();
